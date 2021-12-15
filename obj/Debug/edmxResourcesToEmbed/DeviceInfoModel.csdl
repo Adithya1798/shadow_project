@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Login_ApplicationModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Device">
+    <Key>
+      <PropertyRef Name="Did" />
+    </Key>
+    <Property Name="Did" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Dname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Sid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Lid" />
+    </Key>
+    <Property Name="Lid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Lname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Oid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="organization">
+    <Key>
+      <PropertyRef Name="Oid" />
+    </Key>
+    <Property Name="Oid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Oname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Site">
+    <Key>
+      <PropertyRef Name="Sid" />
+    </Key>
+    <Property Name="Sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Lid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DEVICE_INFO">
+    <Key>
+      <PropertyRef Name="DEVICE_ID" />
+      <PropertyRef Name="DEVICE_NAME" />
+      <PropertyRef Name="DEVICE_TYPE" />
+      <PropertyRef Name="SERIAL_NUMBER" />
+    </Key>
+    <Property Name="DEVICE_ID" Type="Int32" Nullable="false" />
+    <Property Name="DEVICE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DEVICE_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SERIAL_NUMBER" Type="Int32" Nullable="false" />
+    <Property Name="Did" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Login_ApplicationEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Devices" EntityType="Self.Device" />
+    <EntitySet Name="Locations" EntityType="Self.Location" />
+    <EntitySet Name="organizations" EntityType="Self.organization" />
+    <EntitySet Name="Sites" EntityType="Self.Site" />
+    <EntitySet Name="DEVICE_INFO" EntityType="Self.DEVICE_INFO" />
+    <EntitySet Name="Logins" EntityType="Self.Login" />
+  </EntityContainer>
+</Schema>

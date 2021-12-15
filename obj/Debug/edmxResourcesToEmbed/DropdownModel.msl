@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Login_ApplicationModelStoreContainer" CdmEntityContainer="Login_ApplicationEntities">
+    <EntitySetMapping Name="Devices">
+      <EntityTypeMapping TypeName="Login_ApplicationModel.Device">
+        <MappingFragment StoreEntitySet="Devices">
+          <ScalarProperty Name="Did" ColumnName="Did" />
+          <ScalarProperty Name="Dname" ColumnName="Dname" />
+          <ScalarProperty Name="Sid" ColumnName="Sid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="Login_ApplicationModel.Location">
+        <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="Lid" ColumnName="Lid" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Oid" ColumnName="Oid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="organizations">
+      <EntityTypeMapping TypeName="Login_ApplicationModel.organization">
+        <MappingFragment StoreEntitySet="organization">
+          <ScalarProperty Name="Oid" ColumnName="Oid" />
+          <ScalarProperty Name="Oname" ColumnName="Oname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sites">
+      <EntityTypeMapping TypeName="Login_ApplicationModel.Site">
+        <MappingFragment StoreEntitySet="Site">
+          <ScalarProperty Name="Sid" ColumnName="Sid" />
+          <ScalarProperty Name="Sname" ColumnName="Sname" />
+          <ScalarProperty Name="Lid" ColumnName="Lid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="Login_ApplicationModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

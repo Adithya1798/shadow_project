@@ -1,0 +1,11 @@
+﻿@model Login_Application.Location
+
+<option value="">-- Select Location --</option>
+
+@if(ViewBag.Llist != null)
+{
+    foreach (var item in ViewBag.Llist)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+}

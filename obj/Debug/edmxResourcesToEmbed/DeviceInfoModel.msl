@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Login_ApplicationModel1StoreContainer" CdmEntityContainer="Login_ApplicationEntities1">
+    <EntitySetMapping Name="Devices">
+      <EntityTypeMapping TypeName="Login_ApplicationModel1.Device">
+        <MappingFragment StoreEntitySet="Devices">
+          <ScalarProperty Name="Did" ColumnName="Did" />
+          <ScalarProperty Name="Dname" ColumnName="Dname" />
+          <ScalarProperty Name="Sid" ColumnName="Sid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="Login_ApplicationModel1.Location">
+        <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="Lid" ColumnName="Lid" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Oid" ColumnName="Oid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="organizations">
+      <EntityTypeMapping TypeName="Login_ApplicationModel1.organization">
+        <MappingFragment StoreEntitySet="organization">
+          <ScalarProperty Name="Oid" ColumnName="Oid" />
+          <ScalarProperty Name="Oname" ColumnName="Oname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sites">
+      <EntityTypeMapping TypeName="Login_ApplicationModel1.Site">
+        <MappingFragment StoreEntitySet="Site">
+          <ScalarProperty Name="Sid" ColumnName="Sid" />
+          <ScalarProperty Name="Sname" ColumnName="Sname" />
+          <ScalarProperty Name="Lid" ColumnName="Lid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEVICE_INFO">
+      <EntityTypeMapping TypeName="Login_ApplicationModel1.DEVICE_INFO">
+        <MappingFragment StoreEntitySet="DEVICE_INFO">
+          <ScalarProperty Name="DEVICE_ID" ColumnName="DEVICE_ID" />
+          <ScalarProperty Name="DEVICE_NAME" ColumnName="DEVICE_NAME" />
+          <ScalarProperty Name="DEVICE_TYPE" ColumnName="DEVICE_TYPE" />
+          <ScalarProperty Name="SERIAL_NUMBER" ColumnName="SERIAL_NUMBER" />
+          <ScalarProperty Name="Did" ColumnName="Did" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="Login_ApplicationModel1.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

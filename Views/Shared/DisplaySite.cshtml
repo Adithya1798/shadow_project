@@ -1,0 +1,11 @@
+﻿@model Login_Application.Site
+
+<option value="">-- Select Sites --</option>
+
+@if (ViewBag.Slist != null)
+{
+    foreach (var item in ViewBag.Slist)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+}

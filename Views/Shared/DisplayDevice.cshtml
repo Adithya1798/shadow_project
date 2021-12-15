@@ -1,0 +1,20 @@
+﻿@model Login_Application.Device
+
+<option value=""></option>
+
+<br>
+@if (ViewBag.Dlist != null)
+{
+    foreach (var item in ViewBag.Dlist)
+    {
+        //<option value="@item.Value">@item.Text</option>
+        <td>@item.Text</td>
+        @*<div>
+            <ul>
+                <li>@Html.ActionLink(@item.Text, "Devices", new { id = Device.Did })</li>
+            </ul>
+        </div>*@
+
+    }
+}
+

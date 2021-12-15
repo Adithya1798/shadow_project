@@ -1,0 +1,298 @@
+﻿@model Login_Application.Models.DropdownClass
+@{
+    ViewBag.Title = "Index";
+}
+
+<header>
+    <div class="w3-container w3-teal">
+        <center><h2>DASHBOARD</h2></center>
+        <input type="button" class="btn btn-primary" value="Logout" style="float:right !important" onclick="location.href='@Url.Action("Logout", "UserLogin")'" />
+    </div>
+</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body {
+            font-family: "Times New Roman", Georgia, Serif;
+            padding: 25px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+            text-size-adjust: auto;
+            text-decoration: underline;
+            text-shadow: inherit;
+            font-family: "Playfair Display";
+            letter-spacing: 5px;
+        }
+
+        .div-table {
+            display: table;
+            width: auto;
+            background-color: #c0ced3;
+            border: 1px solid #c0ced3;
+            border-spacing: 5px;
+        }
+
+        .div-table-row {
+            display: table-row;
+            width: auto;
+            clear: both;
+        }
+
+        .div-table-col {
+            float: left;
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+
+        aside {
+            text-decoration-style: solid;
+            text-size-adjust: 300%;
+            text-align: center;
+            text-indent: each-line;
+            float: left;
+            width: 25%;
+            height: 415px;
+            background: #ccc;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <aside id="side">
+        <a href="#"><p>Dashboard</p></a>
+        <a href="#"><p>Report</p></a>
+        <a href="#">User Details</a>
+    </aside>
+</body>
+</html>
+
+<br />
+
+<center>
+    <div style="color:purple;">
+        @Html.Label("Organization")
+    </div>
+    @if (ViewBag.OrganizationList != null)
+    {
+        @Html.DropDownListFor(m => m.Oid, ViewBag.OrganizationList as SelectList, "-- Select Organization --", new { @class = "form-control" })
+    }
+</center>
+
+<br />
+
+<center>
+    <div style="color:purple;">
+        @Html.Label("Location")
+    </div>
+    @Html.DropDownListFor(m => m.Lid, new SelectList(""), "-- Select Location --", new { @class = "form-control" })
+</center>
+
+<br />
+
+<center>
+    <div style="color:purple;">
+        @Html.Label("Site")
+    </div>
+    @Html.DropDownListFor(m => m.Sid, new SelectList(""), "-- Select Site --", new { @class = "form-control" })
+</center>
+
+<br />
+
+<center>
+
+    <div style="color:purple;">
+        @Html.Label("Devices")
+    </div>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: Center;
+                background-color: #ccc;
+                color: white;
+            }
+    </style>
+    @*<table id="customers">
+        <tr class=" div-table-row">
+            <th>Device Name</th>
+
+        </tr>
+    </table>*@
+    @*@Html.DropDownListFor(m => m.Did, new SelectList(""), "-- Select Devices --", new { @class = "form-control" })*@
+    <p> <div id="Did"></div> <p>
+
+</center>
+
+<br />
+
+<center>
+
+     <div class="form-group">
+            <center>
+                <input type="button" class="btn btn-primary" value="Submit" style="float:!important" onclick="location.href='@Url.Action("GetDeviceInfo", "Device")?Did'"/>
+            </center>
+        </div> 
+</center>
+<br />
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Oid").change(function () {
+            if (document.getElementById("Oid").selectedIndex == 0) {
+                $("#Lid").empty();
+                $("#Sid").empty();
+                $("#Did").empty();
+            }
+            else {
+                var OrgId = $(this).val();
+                debugger
+                $.ajax({
+                    type: "post",
+                    url: "/Dropdown/GetLocationList?Oid=" + OrgId,
+                    contentType: "html",
+                    success: function (response) {
+                        debugger
+                        $("#Lid").empty();
+                        $("#Lid").append(response);
+                    }
+
+                })
+            }
+        })
+        $("#Lid").change(function () {
+            if (document.getElementById("Lid").selectedIndex == 0) {
+                $("#Sid").empty();
+                $("#Did").empty();
+            }
+            else {
+                var LocId = $(this).val();
+                debugger
+                $.ajax({
+                    type: "post",
+                    url: "/Dropdown/GetSiteList?Lid=" + LocId,
+                    contentType: "html",
+                    success: function (response) {
+                        debugger
+                        $("#Sid").empty();
+                        $("#Sid").append(response);
+                    }
+                })
+            }
+        })
+        $("#Sid").change(function () {
+            if (document.getElementById("Sid").selectedIndex == 0) {
+                $("#Did").empty();
+            }
+            else {
+                var SitId = $(this).val();
+                debugger
+              $.ajax({
+                  type: "post",
+                  url: "/Dropdown/GetDeviceList?Sid=" + SitId,
+                    contentType: "html",
+                   success: function (response) {
+                       debugger
+                       $("#Did").empty();
+                       $("#Did").append(`<a href="${response}"></a>`)
+                       //$("#Did").append(response);
+                        }
+                    })
+                }
+            })
+        })
+</script>
+
+<script> //commented
+
+    @*@Html.ActionLink("Click here", // <-- Link text
+        "About", // <-- Action Method Name
+        "Home", // <-- Controller Name
+        null, // <-- Route value
+        null // <-- htmlArguments
+    ) *@
+                       //$("#Did").attr('href', /Dashboard/Devices);
+
+    @*var SitId = $(this).val();
+    debugger
+    $('#Did').on('click', function () {
+        $.ajax({
+            type: "post",
+            url: "/Dropdown/GetDeviceList?Sid=" + SitId,
+            contentType: "html",
+            async: false,
+            dataType: 'html',
+            url: '@Url.Action("Devices", "Dashboard")'
+        }).success(function (partialView) {
+            //var result = $(partialView).find("#linkDelte").append('a href="#">Link</a>');
+
+            $('#Did').append(result);
+
+        });
+    });*@
+                     //  $(document).ready(function () {
+                       //     $('#myAnchor').click(function () {
+                       //        window.location.href = 'index.php';
+//                        //    });
+//                        //})
+//                        /*                            $($("#Did").append(response))[0].click();*/
+//                        /*                        $($("#Did").append(response))[0].click();*/
+//                        //$($("#Did").append(response)).trigger('click');
+//                            $($("#Did").append(response)).click(function (event) {
+//                                var link = $(this);
+//                                var target = link.attr("target");
+
+//                                if ($.trim(target).length > 0) {
+//                                    window.open(link.attr("href"), target);
+//                                }
+//                                else {
+//                                    window.location = link.attr("href");
+//                                }
+
+//                                event.preventDefault();
+//                            });
+///*                            jQuery('<div><a href="http://example.com"></a></div>').prependTo($("#Did").append(response));*/
+//                            //$("tableSelector").delegate("tr.rows", "click", function () {
+//                            //    alert("Click!");
+//                            //});
+//                            //$("#Did").click(function (response) {
+
+//                            //    $(this).url("/Device/GetDeviceInfo?Did=" + Did)
+                          //})
+
+    @* <a href="#" id="myAnchor">Click me</a> *@
+
+@* <div class="form-group">
+        <center>
+            <input type="button" class="btn btn-primary" value="Submit" style="float:!important" onclick="location.href='@Url.Action(" Index", "Device")'" />
+        </center>
+    </div> *@
+
+</script>

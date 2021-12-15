@@ -1,0 +1,68 @@
+﻿@model Login_Application.Models.DeviceInfo
+
+@{
+    ViewBag.Title = "ViewDevicesById";
+}
+<div style="color:darkslategrey">
+    <h2><u>Devices</u></h2>
+</div>
+<br />
+<br />
+<table class="table">
+    @*<td>
+            <tr>
+              <b>Sl No. </b>  @Html.TextBox("SlNo")
+            </tr>
+        <br />
+            <tr>
+                <b>Device Type: </b>  @Html.TextBox("DeviceType")
+            </tr>
+        <br />
+            <tr>
+                <b>Device Name: </b>  @Html.TextBox("DeviceName")
+            </tr>
+        <br />
+            <tr>
+                <b>Device Detail: </b>  @Html.TextBox("DeviceDetail") <input type="submit" value="Device Detail" />
+            </tr>
+        <br />
+            <tr></tr>
+        </td>*@
+
+    @foreach (var item in Model)
+    {
+        <td>
+        <tr>
+            <div style="color:blueviolet; font-size:large; font-style:inherit">
+
+                <b>Sl No: </b>  @Html.TextBoxFor(modelItem => item.SlNo, new { @readonly = "readonly" })
+            </div>
+        </tr>
+
+        <br />
+        <tr>
+            <div style="color:#8e0b7b; font-size:initial; font-style:inherit">
+
+
+                <b>Device Type: </b>   @Html.TextBoxFor(modelItem => item.DeviceType, new { @readonly = "readonly" })
+            </div>
+        </tr>
+        <br />
+        <tr>
+            <div style="color: #8e0b7b; font-size: initial; font-style: inherit ">
+
+                <b>Device Name: </b>    @Html.TextBoxFor(modelItem => item.DeviceName, new { @readonly = "readonly" })
+            </div>
+        </tr>
+        <br />
+        <tr>
+            <div style="color: #8e0b7b; font-size: initial; font-style: inherit ">
+
+                <b>Device Details: </b>   @Html.TextBoxFor(modelItem => item.DeviceDetail, new { @readonly = "readonly" })
+            </div>
+        </tr>
+
+        </td>
+    }
+
+</table>
